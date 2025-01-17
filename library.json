@@ -1,0 +1,12 @@
+{
+    "name": "FS5113R",
+    "version": "0.1",
+    "author": "CPM",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cyril-musikaloid/FS5113R",
+        "branch": "master"
+    },
+    "frameworks": "arduino",
+    "platforms": "espressif32"
+}
