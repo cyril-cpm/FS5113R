@@ -1,12 +1,18 @@
 #include <FS5113R.h>
 
+int FS5113R::channelIndex = 0;
+
 FS5113R::FS5113R(uint8_t pin) : fPin(pin)
 {}
 
 void FS5113R::begin()
 {
-    ledcSetup(0, 334, 8);
-    ledcAttachPin(fPin, 0);
+    fChannel = channelIndex;
+
+    ledcSetup(fChannel, 334, 8);
+    ledcAttachPin(fPin, fChannel);
+
+    channelIndex++;
 }
 
 void FS5113R::write(float power)
@@ -20,8 +26,7 @@ void FS5113R::write(float power)
     else
         duty = power * (CCW_MIN - CCW_MAX) + CCW_MIN;
 
-    Serial.println(duty);
-    ledcWrite(0, duty);
+    ledcWrite(fChannel, duty);
 }
 
 void FS5113R::stop()

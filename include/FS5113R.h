@@ -9,6 +9,9 @@
 class FS5113R {
 
     public:
+
+    static int channelIndex;
+
     FS5113R(uint8_t pin);
     void begin();
     void write(float power);
@@ -16,4 +19,5 @@ class FS5113R {
 
     private:
     uint8_t fPin = 0;
+    int     fChannel = 0;
 };
